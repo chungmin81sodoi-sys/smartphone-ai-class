@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>스마트폰·AI 생활교실 - 햇살마을 복지관</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="스마트폰·AI 생활교실 - 햇살마을 복지관">
+<meta property="og:description" content="스마트폰이 처음이어도 괜찮아요. 참가비 무료, 매주 토요일 6회. 햇살마을 복지관 3층 배움터.">
+<meta name="description" content="스마트폰이 처음이어도 괜찮아요. 참가비 무료, 매주 토요일 6회. 햇살마을 복지관 3층 배움터.">
+<meta property="og:locale" content="ko_KR">
+<style>
+  :root {
+    --sun: #E8A33D;       /* 로고 색: 띠·버튼 바탕·번호 동그라미에만 사용 */
+    --sun-soft: #FFF3DC;
+    --cream: #FFFBF3;
+    --ink: #3D2A10;       /* 글씨: 흰/크림 배경 대비 약 12:1 */
+    --ink-soft: #5E421C;
+    --line: #F0D9AE;
+    --check: #A03B00;     /* 확인 중 표시 */
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; overflow-x: hidden; scroll-behavior: auto; }
+  body {
+    margin: 0; background: var(--cream); color: var(--ink);
+    font-family: "Malgun Gothic", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    font-size: 22px; line-height: 1.7; word-break: keep-all; overflow-wrap: anywhere;
+    padding-bottom: 88px; /* 아래 고정 전화 버튼 자리 */
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 16px; }
+  header { padding: 14px 0 0; }
+  header img { height: 48px; width: auto; display: block; }
+
+  /* 맨 위 띠: 그림은 크게, 높이는 낮게. 이름과 버튼이 첫 화면에 같이 보임 */
+  .hero { position: relative; overflow: hidden; margin: 12px 0 0;
+    padding: 28px 16px 32px; text-align: center;
+    background: linear-gradient(135deg, #FFE3B3 0%, #FFD08A 100%); }
+  .hero .art { position: absolute; right: -20px; bottom: -30px; width: min(60%, 340px); height: auto; opacity: .4; pointer-events: none; }
+  .hero-in { position: relative; max-width: 720px; margin: 0 auto; }
+  h1 { font-size: 2.3rem; line-height: 1.25; margin: 0 0 10px; }
+  .lead { font-size: 1.1rem; margin: 0 auto; max-width: 28em; }
+
+  .btn {
+    display: block; width: 100%; text-align: center; text-decoration: none;
+    background: var(--ink); color: #fff; font-weight: 800; font-size: 1.3rem;
+    padding: 16px 20px; min-height: 64px; border-radius: 16px; margin-top: 18px;
+    border: 3px solid var(--ink);
+  }
+  .btn.sun { background: var(--sun); color: var(--ink); }
+  .btn:focus-visible, a:focus-visible { outline: 4px solid var(--ink); outline-offset: 3px; }
+
+  section { padding: 30px 0; border-top: 3px solid var(--line); }
+  section:first-of-type { border-top: 0; }
+  h2 { font-size: 1.6rem; line-height: 1.3; margin: 0 0 14px; }
+  h2::before { content: ""; display: inline-block; width: 16px; height: 16px; border-radius: 50%;
+    background: var(--sun); margin-right: 10px; }
+
+  dl.info { margin: 0; display: grid; gap: 12px; }
+  .info div { background: #fff; border: 2px solid var(--line); border-radius: 16px; padding: 14px 16px; }
+  .info dt { font-weight: 800; color: var(--ink-soft); font-size: 1rem; }
+  .info dd { margin: 2px 0 0; }
+
+  /* 일정표: 흰 바탕 + 진한 글씨. 색은 회차 번호 동그라미에만 */
+  table.sched { width: 100%; border-collapse: collapse; background: #fff; border: 2px solid var(--line); }
+  .sched th, .sched td { padding: 14px 10px; text-align: left; vertical-align: top; border-bottom: 2px solid var(--line); line-height: 1.5; }
+  .sched thead th { background: var(--sun-soft); font-size: 1rem; }
+  .sched tbody tr:last-child td { border-bottom: 0; }
+  .no { display: inline-block; min-width: 2.2em; text-align: center; background: var(--sun); border-radius: 999px; font-weight: 800; }
+  .sched td:nth-child(2) { font-weight: 800; }
+  .tbd { color: var(--check); font-weight: 800; }
+  .note { margin: 14px 0 0; color: var(--ink-soft); }
+
+  .apply { background: var(--sun-soft); border-radius: 20px; padding: 20px 16px; border: 3px solid var(--sun); }
+  .apply p { margin: 0 0 8px; }
+  .about p { margin: 0 0 12px; }
+  footer { background: var(--sun-soft); padding: 22px 0 30px; font-size: 1rem; color: var(--ink-soft); }
+  footer p { margin: 0 0 6px; }
+
+  /* 아래 고정 전화 버튼 */
+  .callbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; padding: 10px 16px;
+    background: #fff; border-top: 3px solid var(--sun); }
+  .callbar a { display: flex; align-items: center; justify-content: center; max-width: 720px; margin: 0 auto;
+    text-decoration: none; white-space: nowrap;
+    background: var(--sun); color: var(--ink); font-weight: 800; font-size: 1.15rem; min-height: 60px; line-height: 1.3;
+    border-radius: 14px; border: 3px solid var(--ink); }
+
+  @media (min-width: 640px) {
+    dl.info { grid-template-columns: 1fr 1fr; }
+    .btn { width: auto; display: inline-block; min-width: 300px; }
+    .hero { padding: 48px 16px 52px; }
+    h1 { font-size: 2.8rem; }
+  }
+  /* 휴대폰: 일정표를 한 줄씩 쌓아서 큰 글씨로 */
+  @media (max-width: 639px) {
+    .sched thead { display: none; }
+    .sched, .sched tbody, .sched tr, .sched td { display: block; width: 100%; }
+    .sched tr { padding: 14px 14px 12px; border-bottom: 2px solid var(--line); }
+    .sched tbody tr:last-child { border-bottom: 0; }
+    .sched td { border: 0; padding: 2px 0; }
+    .sched td:nth-child(4)::before { content: "강사 "; color: var(--ink-soft); }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header><img src="의뢰자료/이미지/로고.svg" alt="햇살마을 복지관 로고"></header>
+</div>
+
+  <div class="hero">
+    <img class="art" src="의뢰자료/이미지/삽화_함께배워요.svg" alt="두 사람이 스마트폰을 함께 배우는 그림">
+    <div class="hero-in">
+      <h1>스마트폰·AI 생활교실</h1>
+      <p class="lead">스마트폰이 처음이어도 괜찮아요.<br>전화·사진·카카오톡부터 AI까지, 천천히 함께 배워요.</p>
+      <a class="btn" href="신청.html">참가신청 하러 가기</a>
+    </div>
+  </div>
+
+<div class="wrap">
+  <section>
+    <h2>한눈에 보기</h2>
+    <dl class="info">
+      <div><dt>대상</dt><dd>햇살마을 주민 누구나<br>스마트폰을 처음 쓰시는 분도 환영해요</dd></div>
+      <div><dt>장소</dt><dd>햇살마을 복지관 3층 배움터<br>(햇살시 해바라기로 12)</dd></div>
+      <div><dt>참가비</dt><dd>무료</dd></div>
+      <div><dt>정원</dt><dd>회차별 정원이 있어요</dd></div>
+    </dl>
+  </section>
+
+  <section>
+    <h2>일정 (총 6회, 토요일)</h2>
+    <table class="sched">
+      <thead><tr><th>회차</th><th>날짜</th><th>주제</th><th>강사</th></tr></thead>
+      <tbody>
+        <tr><td><span class="no">1</span></td><td>11월 6일(토)</td><td>스마트폰 기본 - 전화·문자·사진 찍기</td><td>정강사</td></tr>
+        <tr><td><span class="no">2</span></td><td>11월 13일(토)</td><td>카카오톡으로 사진 보내기·영상통화</td><td>정강사</td></tr>
+        <tr><td><span class="no">3</span></td><td>11월 20일(토)</td><td>은행 앱 없이 하는 안전한 생활 (보이스피싱 예방)</td><td><span class="tbd">확인 중</span></td></tr>
+        <tr><td><span class="no">4</span></td><td>11월 27일(토)</td><td>AI에게 말로 물어보기 - 날씨·버스·약 정보</td><td>정강사</td></tr>
+        <tr><td><span class="no">5</span></td><td>12월 4일(토)</td><td>AI로 손주에게 편지 쓰기</td><td>정강사</td></tr>
+        <tr><td><span class="no">6</span></td><td>12월 11일(토)</td><td>수료식 및 자유 질문 시간</td><td>이동료</td></tr>
+      </tbody>
+    </table>
+    <p class="note">수업 시간: <span class="tbd">확인 중</span></p>
+  </section>
+
+  <section id="apply">
+    <h2>신청 방법</h2>
+    <div class="apply">
+      <p><strong>① 전화 신청</strong><br>평생교육팀 <a href="tel:020003311" style="color:inherit;font-weight:800">02-000-3311</a></p>
+      <p><strong>② 방문 신청</strong><br>복지관 1층 안내데스크</p>
+      <a class="btn sun" href="tel:020003311">📞 전화로 신청하기</a>
+    </div>
+  </section>
+
+  <section id="way">
+    <h2>오시는 길</h2>
+    <dl class="info">
+      <div><dt>버스</dt><dd>마을버스 <strong>3번</strong>, "복지관 앞" 정류장에서 내리면 바로 앞이에요</dd></div>
+      <div><dt>주소</dt><dd>햇살시 해바라기로 12<br>3층 배움터 (엘리베이터 있어요)</dd></div>
+      <div><dt>주차</dt><dd>주차장이 좁아요. 가급적 버스를 이용해 주세요</dd></div>
+    </dl>
+  </section>
+
+  <section class="about">
+    <h2>햇살마을 복지관 소개</h2>
+    <p>"함께 웃는 마을, 서로 돌보는 이웃"을 비전으로, 아이부터 어르신까지 모든 주민을 위한 복지 서비스를 제공합니다.</p>
+    <p>평생교육팀은 한글·서예·노래교실 등 연 30여 개 강좌를 운영하며, 스마트폰 교육도 늘려 가고 있어요.</p>
+    <p>마을버스 3번 "복지관 앞" 정류장에서 내리면 바로 앞이고, 엘리베이터가 있어 편하게 오실 수 있어요.</p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p>햇살마을 복지관 · 햇살시 해바라기로 12</p>
+    <p>운영시간 평일 9~18시 · 토요일 프로그램 있는 날 9~13시 · 일요일·공휴일 휴관</p>
+  </div>
+</footer>
+
+<div class="callbar"><a href="tel:020003311">📞 전화 신청 02-000-3311</a></div>
+
+</body>
+</html>

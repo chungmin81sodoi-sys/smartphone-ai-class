@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>참가신청 - 스마트폰·AI 생활교실</title>
+<style>
+  :root { --sun:#E8A33D; --sun-soft:#FFF3DC; --cream:#FFFBF3; --ink:#3D2A10; --ink-soft:#5E421C; --line:#F0D9AE; --check:#A03B00; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--cream); color:var(--ink);
+    font-family:"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+    font-size:22px; line-height:1.7; word-break:keep-all; overflow-wrap:anywhere; }
+  .wrap { max-width:720px; margin:0 auto; padding:0 16px 40px; }
+  header { padding:14px 0; }
+  header img { height:48px; width:auto; display:block; }
+  .back { display:inline-block; color:var(--ink); font-weight:700; padding:10px 0; min-height:44px; }
+  h1 { font-size:2.1rem; line-height:1.3; margin:8px 0 6px; }
+  .lead { margin:0 0 20px; }
+  .box { background:#fff; border:2px solid var(--line); border-radius:20px; padding:18px 16px; margin-bottom:16px; }
+  .box h2 { font-size:1.4rem; margin:0 0 10px; }
+  .box p { margin:0 0 8px; }
+  .btn { display:block; width:100%; text-align:center; text-decoration:none; cursor:pointer; font-family:inherit;
+    background:var(--sun); color:var(--ink); font-weight:800; font-size:1.3rem;
+    padding:14px 20px; min-height:64px; border-radius:16px; margin-top:14px; border:3px solid var(--ink); }
+  .btn.dark { background:var(--ink); color:#fff; }
+  a:focus-visible, .btn:focus-visible, input:focus-visible, textarea:focus-visible { outline:4px solid var(--ink); outline-offset:3px; }
+  .tbd { color:var(--check); font-weight:800; }
+  ul { margin:6px 0 0; padding-left:1.2em; }
+
+  label, legend { display:block; font-weight:800; margin:16px 0 6px; padding:0; }
+  .req { color:var(--check); }
+  input[type=text], input[type=tel] { width:100%; font:inherit; font-size:1.1rem; min-height:60px; padding:10px 14px;
+    border:3px solid var(--ink-soft); border-radius:14px; background:#fff; color:var(--ink); }
+  fieldset { border:0; margin:0; padding:0; min-width:0; }
+  .opt { display:flex; align-items:center; gap:12px; min-height:60px; padding:8px 14px; margin:0 0 8px;
+    border:3px solid var(--line); border-radius:14px; font-weight:400; background:#fff; }
+  .opt input { width:28px; height:28px; flex:none; accent-color:#8A5A00; }
+  .hint { font-size:1rem; color:var(--ink-soft); margin:4px 0 0; }
+  .err { color:var(--check); font-weight:800; margin:8px 0 0; }
+
+  #result { display:none; background:var(--sun-soft); border:3px solid var(--sun); }
+  #sum { white-space:pre-line; background:#fff; border:2px solid var(--line); border-radius:14px; padding:12px 14px; margin:10px 0; }
+  .warn { font-weight:800; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><img src="의뢰자료/이미지/로고.svg" alt="햇살마을 복지관 로고"></header>
+  <a class="back" href="index.html">← 교실 소개로 돌아가기</a>
+
+  <h1>참가신청</h1>
+  <p class="lead">스마트폰·AI 생활교실 (참가비 무료 · 회차별 정원 있음)</p>
+
+  <form id="form" class="box" novalidate>
+    <h2>① 참가자 정보 적기</h2>
+    <p class="hint">적은 내용은 <strong>이 화면에서만</strong> 쓰이고 어디에도 저장되거나 전송되지 않아요.</p>
+
+    <label for="name">이름 <span class="req">(꼭)</span></label>
+    <input type="text" id="name" autocomplete="name">
+
+    <label for="phone">연락처 <span class="req">(꼭)</span></label>
+    <input type="tel" id="phone" inputmode="tel" autocomplete="tel" placeholder="010-0000-0000">
+
+    <fieldset>
+      <legend>듣고 싶은 회차 <span class="req">(꼭, 여러 개 가능)</span></legend>
+      <label class="opt"><input type="checkbox" name="s" value="1회 11월 6일(토) 스마트폰 기본"> 1회 · 11월 6일(토)</label>
+      <label class="opt"><input type="checkbox" name="s" value="2회 11월 13일(토) 카카오톡"> 2회 · 11월 13일(토)</label>
+      <label class="opt"><input type="checkbox" name="s" value="3회 11월 20일(토) 안전한 생활"> 3회 · 11월 20일(토)</label>
+      <label class="opt"><input type="checkbox" name="s" value="4회 11월 27일(토) AI 물어보기"> 4회 · 11월 27일(토)</label>
+      <label class="opt"><input type="checkbox" name="s" value="5회 12월 4일(토) AI 편지 쓰기"> 5회 · 12월 4일(토)</label>
+      <label class="opt"><input type="checkbox" name="s" value="6회 12월 11일(토) 수료식"> 6회 · 12월 11일(토)</label>
+    </fieldset>
+
+    <label for="memo">알려 주실 것 (없으면 비워 두세요)</label>
+    <input type="text" id="memo" placeholder="예: 스마트폰이 처음이에요">
+
+    <p id="err" class="err" role="alert"></p>
+    <button type="submit" class="btn dark">신청 내용 정리하기</button>
+  </form>
+
+  <div id="result" class="box" role="region" aria-live="polite">
+    <h2>② 이제 복지관에 알려 주세요</h2>
+    <p class="warn">아직 신청이 끝난 게 아니에요.<br>아래 내용을 전화로 말씀하시거나, 안내데스크에서 보여 주세요.</p>
+    <div id="sum"></div>
+    <a class="btn" href="tel:020003311">📞 02-000-3311 전화하기</a>
+    <button type="button" class="btn dark" id="copy">내용 복사하기</button>
+    <p id="copied" class="hint" role="status"></p>
+  </div>
+
+  <div class="box">
+    <h2>전화로 바로 신청</h2>
+    <p>평생교육팀 <a href="tel:020003311" style="color:inherit;font-weight:800">02-000-3311</a></p>
+    <p>말씀해 주세요: 이름, 연락처, 듣고 싶은 회차</p>
+  </div>
+
+  <div class="box">
+    <h2>직접 방문해서 신청</h2>
+    <p>햇살마을 복지관 <strong>1층 안내데스크</strong></p>
+    <p>햇살시 해바라기로 12 · 평일 9~18시, 토요일 9~13시</p>
+  </div>
+
+  <div class="box">
+    <h2>신청 전에 확인하세요</h2>
+    <ul>
+      <li>매주 토요일, 11월 6일부터 12월 11일까지 총 6회</li>
+      <li>장소: 복지관 3층 배움터 (엘리베이터 있음)</li>
+      <li>수업 시간: <span class="tbd">확인 중</span></li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  var form = document.getElementById('form'), result = document.getElementById('result');
+  var sum = document.getElementById('sum'), err = document.getElementById('err');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.getElementById('name').value.trim();
+    var phone = document.getElementById('phone').value.trim();
+    var memo = document.getElementById('memo').value.trim();
+    var s = Array.prototype.map.call(form.querySelectorAll('input[name=s]:checked'), function (c) { return c.value; });
+    var digits = phone.replace(/\D/g, '');
+    if (!name) { err.textContent = '이름을 적어 주세요.'; document.getElementById('name').focus(); return; }
+    if (digits.length < 9 || digits.length > 11) { err.textContent = '연락처를 확인해 주세요. (숫자 9~11자리)'; document.getElementById('phone').focus(); return; }
+    if (!s.length) { err.textContent = '듣고 싶은 회차를 하나 이상 골라 주세요.'; return; }
+    err.textContent = '';
+    sum.textContent = '[스마트폰·AI 생활교실 참가신청]\n이름: ' + name + '\n연락처: ' + phone +
+      '\n회차: ' + s.join(', ') + (memo ? '\n메모: ' + memo : '');
+    result.style.display = 'block';
+    result.scrollIntoView({ block: 'start' });
+  });
+  document.getElementById('copy').addEventListener('click', function () {
+    var c = document.getElementById('copied'), t = sum.textContent;
+    function ok() { c.textContent = '복사했어요. 문자나 카카오톡에 붙여 넣을 수 있어요.'; }
+    function fail() { c.textContent = '복사가 안 돼요. 위 내용을 화면 캡처해 두세요.'; }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(ok, fail); else fail();
+  });
+</script>
+</body>
+</html>
